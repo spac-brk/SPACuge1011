@@ -8,17 +8,12 @@ pd.set_option('display.max_columns', None)
 
 path = 'data/'
 
-vgsales = pd.read_csv(path + 'vgsales_out.csv', dtype={'Rank': int,
+vgsales = pd.read_csv(path + 'vgsales_info.csv', dtype={'Index': int,
                                                    'Name': str,
                                                    'Platform': str,
                                                    'Year': 'Int64',
                                                    'Genre': str,
-                                                   'Publisher': str,
-                                                   'NA_Sales': float,
-                                                   'EU_Sales': float,
-                                                   'JP_Sales': float,
-                                                   'Other_Sales': float,
-                                                   'Global_Sales': float})
+                                                   'Publisher': str})
 
 
 # Find publishers with similar names

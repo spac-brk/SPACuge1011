@@ -1,7 +1,10 @@
+from lib2to3.fixes.fix_operator import invocation
+
 import pandas as pd
 import json
 from datetime import datetime
 from igdb.wrapper import IGDBWrapper
+import pprint as pp
 import time
 
 
@@ -20,30 +23,25 @@ pd.set_option('display.max_columns', None)
 # access_token = requests.post(url, obj)
 
 
-def my_func():
-    return
+path = 'data/'
 
+wrapper = IGDBWrapper("xds7ncmcl3m6rx9lvvr02cpc5r4zpa", "ssjwa1posopjtl56fztpabte4arb02")
 
-def main():
-    path = 'data/'
+vgsales = pd.read_csv(path + 'vgsales_info.csv')
+year_missing = vgsales.loc[pd.isna(vgsales['Year'])]
+publ_missing = vgsales.loc[vgsales['Publisher'] == 'Unknown']
 
-    wrapper = IGDBWrapper("xds7ncmcl3m6rx9lvvr02cpc5r4zpa", "ssjwa1posopjtl56fztpabte4arb02")
+game_name = 'NHL Slapshot'
+endpoint = 'games'
+query = (f'fields id, genres.name, involved_companies.publisher, involved_companies.company.name, '
+         f'platforms.name, first_release_date, url, parent_game; where name = "{game_name}";')
+game_search_json = wrapper.api_request(endpoint,query)
+game_search = json.loads(game_search_json)
+release_year = datetime.fromtimestamp(game_search[0]['first_release_date']).strftime('%Y')
+game_publisher = [x.get('company').get('name') for x in game_search[0]['involved_companies'] if x.get('publisher')][0]
+game_url = game_search[0]['url']
 
-    vgsales = pd.read_csv(path + 'vgsales_out.csv')
-    year_missing = vgsales.loc[pd.isna(vgsales['Year'])]
-    publ_missing = vgsales.loc[vgsales['Publisher'] == 'Unknown']
-
-    # for game_name in year_missing['Name']:
-    game_name = 'Madden NFL 2004'
-    endpoint = 'games'
-    query = f'fields id, genres.name, involved_companies.publisher, platforms.name, first_release_date; where name = "{game_name}" and parent_game = null;'
-    game_search_json = wrapper.api_request(endpoint,query)
-    game_search = json.loads(game_search_json)
-    release_year = datetime.utcfromtimestamp(game_search['first_release_date']).strftime('%Y')
-    time.sleep(1)
-    print('Hello World!')
-    print(game_search)
-    print(f'{game_name}: {release_year}')
-
-if __name__ == '__main__':
-    main()
+print('IGDB API json response:')
+pp.pp(game_search)
+print(f'\n{game_name} was released by {game_publisher} in {release_year}.')
+print(game_url)
