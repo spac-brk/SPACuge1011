@@ -1,11 +1,11 @@
-import numpy as np
 import pandas as pd
+import numpy as np
 
 pd.set_option('display.width', 1000)
 pd.set_option('display.max_columns', None)
 
+# Load the dataset
 path = 'data/'
-
 vgsales = pd.read_csv(path + 'vgsales.csv', dtype={'Rank': int,
                                                    'Name': str,
                                                    'Platform': str,
@@ -17,41 +17,50 @@ vgsales = pd.read_csv(path + 'vgsales.csv', dtype={'Rank': int,
                                                    'JP_Sales': float,
                                                    'Other_Sales': float,
                                                    'Global_Sales': float})
-vgsales.rename(columns={'Platform': 'Platform_Id'}, inplace=True)
 
 # Clean up missing data
 vgsales['Year'] = vgsales['Year'].replace({np.nan: None})
 vgsales['Publisher'] = vgsales['Publisher'].replace({np.nan: 'Unknown'})
 
 # Delete exact duplicates
-vgsales = vgsales.drop_duplicates(subset=['Name', 'Platform_Id', 'Year', 'Genre', 'Publisher',
+vgsales = vgsales.drop_duplicates(subset=['Name', 'Platform', 'Year', 'Genre', 'Publisher',
                                           'EU_Sales', 'NA_Sales', 'JP_Sales', 'Other_Sales', 'Global_Sales'])
 
-# Sort data and make first column index column with proper sequential numbering
-vgsales = (vgsales.sort_values(by=['Year', 'Genre', 'Publisher', 'Name', 'Platform_Id'])
-           .reset_index(drop=True))
-vgsales.index += 1  # Make index start at 1
-vgsales.insert(0, 'Index_Info', vgsales.index)
-vgsales_info = vgsales[['Index_Info', 'Name', 'Platform_Id', 'Year', 'Genre', 'Publisher', 'Global_Sales']]
+# Step 1: Create vgsales_info with unique entries of Name, Year, Genre, Publisher
+vgsales_info = vgsales[['Name', 'Year', 'Genre', 'Publisher']].drop_duplicates().reset_index(drop=True)
+vgsales_info['Index_Info'] = range(1, len(vgsales_info) + 1)
 
-# Normalize sales
-vgsales = pd.melt(vgsales, ['Index_Info', 'Name', 'Platform_Id', 'Year', 'Genre', 'Publisher'],
-                  ['NA_Sales', 'EU_Sales', 'JP_Sales', 'Other_Sales', 'Global_Sales'],
-                  var_name='Region', value_name='Sales')
-vgsales = vgsales[~(vgsales['Region'] == 'Global_Sales')]
-vgsales['Region_Id'] = vgsales['Region'].map({'EU_Sales': 1, 'NA_Sales': 2, 'JP_Sales': 3, 'Other_Sales': 4})
-vgsales = (vgsales.sort_values(by=['Index_Info', 'Region_Id'])
-           .reset_index(drop=True))
-vgsales.index += 1  # Make index start at 1
-vgsales.insert(0, 'Index_Reg', vgsales.index)
-vgsales_reg = vgsales[['Index_Reg', 'Index_Info', 'Region_Id', 'Sales']]
+# Step 2: Create vgsales_plf with aggregated sales data
+sales_columns = ['NA_Sales', 'EU_Sales', 'JP_Sales', 'Other_Sales', 'Global_Sales']
+vgsales_plf = vgsales[['Name', 'Year', 'Platform'] + sales_columns].merge(
+    vgsales_info[['Name', 'Year', 'Index_Info']], on=['Name', 'Year'], how='left'
+).groupby(['Index_Info', 'Platform'], as_index=False).agg({col: 'sum' for col in sales_columns})
+vgsales_plf['Index_Plf'] = range(1, len(vgsales_plf) + 1)
+vgsales_plf.rename(columns={'Platform': 'Platform_Id'}, inplace=True)
+
+# Step 3: Create vgsales_reg directly from vgsales_plf
+vgsales_reg = vgsales_plf.melt(
+    id_vars=['Index_Plf', 'Platform_Id'],
+    value_vars=['NA_Sales', 'EU_Sales', 'JP_Sales', 'Other_Sales'],
+    var_name='Region',
+    value_name='Sales'
+).reset_index(drop=True)
+vgsales_reg['Region_Id'] = vgsales_reg['Region'].map({'EU_Sales': 1, 'NA_Sales': 2, 'JP_Sales': 3, 'Other_Sales': 4})
+vgsales_reg['Index_Reg'] = range(1, len(vgsales_reg) + 1)
+vgsales_reg = vgsales_reg[['Index_Reg', 'Index_Plf', 'Region_Id', 'Sales']]
+
+# Choosing columns
+vgsales_info = vgsales_info[['Index_Info', 'Name', 'Year', 'Genre', 'Publisher']]
+vgsales_plf = vgsales_plf[['Index_Plf', 'Index_Info', 'Platform_Id', 'Global_Sales']]
+vgsales_reg = vgsales_reg[['Index_Reg', 'Index_Plf', 'Region_Id', 'Sales']]
 
 # Region names
-region_names = pd.DataFrame(np.array([[1, 'Europe'],
-                                      [2, 'North America'],
-                                      [3, 'Japan'],
-                                      [4, 'Other Countries']]),
-                            columns=['Region_Id', 'Region_Name'])
+region_names = pd.DataFrame(np.array([
+    [1, 'Europe'],
+    [2, 'North America'],
+    [3, 'Japan'],
+    [4, 'Other Countries']
+]), columns=['Region_Id', 'Region_Name'])
 
 # Platform names
 platform_names = pd.DataFrame(np.array([
@@ -88,8 +97,17 @@ platform_names = pd.DataFrame(np.array([
     ['GG', 'Game Gear']
 ]), columns=['Platform_Id', 'Platform_Name'])
 
-# Write to CSV
-vgsales_info.to_csv(path + 'vgsales_info.csv', index=False)
-vgsales_reg.to_csv(path + 'vgsales_reg.csv', index=False)
+# Save datasets to CSV files
+vgsales_info.to_csv(path + 'vgsales_info_c.csv', index=False)
+vgsales_plf.to_csv(path + 'vgsales_plf_c.csv', index=False)
+vgsales_reg.to_csv(path + 'vgsales_reg_c.csv', index=False)
 region_names.to_csv(path + 'region_names.csv', index=False)
 platform_names.to_csv(path + 'platform_names.csv', index=False)
+
+# Print sample rows for verification
+print("vgsales_info:")
+print(vgsales_info.head())
+print("\nvgsales_plf:")
+print(vgsales_plf.head())
+print("\nvgsales_reg:")
+print(vgsales_reg.head())
