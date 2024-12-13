@@ -98,9 +98,9 @@ platform_names = pd.DataFrame(np.array([
 ]), columns=['Platform_Id', 'Platform_Name'])
 
 # Save datasets to CSV files
-vgsales_info.to_csv(path + 'vgsales_info_c.csv', index=False)
-vgsales_plf.to_csv(path + 'vgsales_plf_c.csv', index=False)
-vgsales_reg.to_csv(path + 'vgsales_reg_c.csv', index=False)
+vgsales_info.to_csv(path + 'vgsales_info.csv', index=False)
+vgsales_plf.to_csv(path + 'vgsales_plf.csv', index=False)
+vgsales_reg.to_csv(path + 'vgsales_reg.csv', index=False)
 region_names.to_csv(path + 'region_names.csv', index=False)
 platform_names.to_csv(path + 'platform_names.csv', index=False)
 
