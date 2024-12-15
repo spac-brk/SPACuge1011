@@ -26,6 +26,9 @@ vgsales['Publisher'] = vgsales['Publisher'].replace({np.nan: 'Unknown'})
 vgsales = vgsales.drop_duplicates(subset=['Name', 'Platform', 'Year', 'Genre', 'Publisher',
                                           'EU_Sales', 'NA_Sales', 'JP_Sales', 'Other_Sales', 'Global_Sales'])
 
+# Multiply sales by 1 million
+vgsales[['EU_Sales', 'NA_Sales', 'JP_Sales', 'Other_Sales', 'Global_Sales']] *= 1000000
+
 # Step 1: Create vgsales_info with unique entries of Name, Year, Genre, Publisher
 vgsales_info = vgsales[['Name', 'Year', 'Genre', 'Publisher']].drop_duplicates().reset_index(drop=True)
 vgsales_info['Index_Info'] = range(1, len(vgsales_info) + 1)

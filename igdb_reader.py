@@ -33,7 +33,7 @@ publ_missing = vgsales.loc[vgsales['Publisher'] == 'Unknown']
 
 game_name = 'NHL Slapshot'
 endpoint = 'games'
-query = (f'fields id, genres.name, involved_companies.publisher, involved_companies.company.name, '
+query = (f'fields id, name, genres.name, involved_companies.publisher, involved_companies.company.name, '
          f'platforms.name, first_release_date, url, parent_game; where name = "{game_name}";')
 game_search_json = wrapper.api_request(endpoint,query)
 game_search = json.loads(game_search_json)

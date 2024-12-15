@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="93646f28-f066-478f-adad-08a0300dfdd8" name="Changes" comment="Initial commit">
+    <list default="true" id="93646f28-f066-478f-adad-08a0300dfdd8" name="Changes" comment="Changing output file names">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/igdb_reader.py" beforeDir="false" afterPath="$PROJECT_DIR$/igdb_reader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/similar_publishers.py" beforeDir="false" afterPath="$PROJECT_DIR$/similar_publishers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vgsales.py" beforeDir="false" afterPath="$PROJECT_DIR$/vgsales.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -43,6 +42,7 @@
     "Python.vgsales_cop.executor": "Run",
     "Python.vgsales_cop2.executor": "Run",
     "Python.vgsales_cop3.executor": "Run",
+    "Python.vgsales_cop4.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "master",
@@ -98,11 +98,38 @@
       <option name="project" value="LOCAL" />
       <updated>1733919469429</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="From before Copilot help with vgsales.py">
+      <option name="closed" value="true" />
+      <created>1734095403977</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1734095403977</updated>
+    </task>
+    <task id="LOCAL-00003" summary="After Copilot help with vgsales.py">
+      <option name="closed" value="true" />
+      <created>1734095527693</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1734095527693</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Changing output file names">
+      <option name="closed" value="true" />
+      <created>1734095681831</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1734095681831</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial commit" />
+    <MESSAGE value="From before Copilot help with vgsales.py" />
+    <MESSAGE value="After Copilot help with vgsales.py" />
+    <MESSAGE value="Changing output file names" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changing output file names" />
   </component>
 </project>
