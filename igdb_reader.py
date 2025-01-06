@@ -37,7 +37,7 @@ query = (f'fields id, name, genres.name, involved_companies.publisher, involved_
          f'platforms.name, first_release_date, url, parent_game; where name = "{game_name}";')
 game_search_json = wrapper.api_request(endpoint,query)
 game_search = json.loads(game_search_json)
-release_year = datetime.fromtimestamp(game_search[0]['first_release_date']).strftime('%Y')
+release_year = datetime.fromtimestamp(game_search[0]['first_release_date']).strftime('%Y-%m-%d:%H:%M:%S')
 game_publisher = [x.get('company').get('name') for x in game_search[0]['involved_companies'] if x.get('publisher')][0]
 game_url = game_search[0]['url']
 

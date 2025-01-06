@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="93646f28-f066-478f-adad-08a0300dfdd8" name="Changes" comment="Changing output file names">
+    <list default="true" id="93646f28-f066-478f-adad-08a0300dfdd8" name="Changes" comment="vgsales.py changed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/igdb_reader.py" beforeDir="false" afterPath="$PROJECT_DIR$/igdb_reader.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vgsales.py" beforeDir="false" afterPath="$PROJECT_DIR$/vgsales.py" afterDir="false" />
@@ -33,22 +33,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.igdb_reader.executor": "Run",
-    "Python.similar_publishers.executor": "Run",
-    "Python.test.executor": "Run",
-    "Python.vgsales.executor": "Run",
-    "Python.vgsales_cop.executor": "Run",
-    "Python.vgsales_cop2.executor": "Run",
-    "Python.vgsales_cop3.executor": "Run",
-    "Python.vgsales_cop4.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.igdb_reader.executor&quot;: &quot;Run&quot;,
+    &quot;Python.similar_publishers.executor&quot;: &quot;Run&quot;,
+    &quot;Python.test.executor&quot;: &quot;Run&quot;,
+    &quot;Python.vgsales.executor&quot;: &quot;Run&quot;,
+    &quot;Python.vgsales_cop.executor&quot;: &quot;Run&quot;,
+    &quot;Python.vgsales_cop2.executor&quot;: &quot;Run&quot;,
+    &quot;Python.vgsales_cop3.executor&quot;: &quot;Run&quot;,
+    &quot;Python.vgsales_cop4.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="SPACuge1011" />
@@ -122,7 +122,23 @@
       <option name="project" value="LOCAL" />
       <updated>1734095681831</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="vgsales.py not quite working here...">
+      <option name="closed" value="true" />
+      <created>1734279142838</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1734279142838</updated>
+    </task>
+    <task id="LOCAL-00006" summary="vgsales.py changed">
+      <option name="closed" value="true" />
+      <created>1734279199615</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1734279199615</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -130,6 +146,8 @@
     <MESSAGE value="From before Copilot help with vgsales.py" />
     <MESSAGE value="After Copilot help with vgsales.py" />
     <MESSAGE value="Changing output file names" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changing output file names" />
+    <MESSAGE value="vgsales.py not quite working here..." />
+    <MESSAGE value="vgsales.py changed" />
+    <option name="LAST_COMMIT_MESSAGE" value="vgsales.py changed" />
   </component>
 </project>
