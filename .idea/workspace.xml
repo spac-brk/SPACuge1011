@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="93646f28-f066-478f-adad-08a0300dfdd8" name="Changes" comment="vgsales.py changed">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/igdb_reader.py" beforeDir="false" afterPath="$PROJECT_DIR$/igdb_reader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vgsales.py" beforeDir="false" afterPath="$PROJECT_DIR$/vgsales.py" afterDir="false" />
-    </list>
+    <list default="true" id="93646f28-f066-478f-adad-08a0300dfdd8" name="Changes" comment="Most recent changes..." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,6 +20,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "spac-brk"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/spac-brk/SPACuge1011",
+    "accountId": "78e01844-dec2-4eea-8f07-9a86b2f08564"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -77,7 +85,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-1b1018131e27-aa17d162503b-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-243.22562.180" />
+        <option value="bundled-python-sdk-495700d161d3-aa17d162503b-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-243.22562.220" />
       </set>
     </attachedChunks>
   </component>
@@ -138,7 +146,15 @@
       <option name="project" value="LOCAL" />
       <updated>1734279199615</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Most recent changes...">
+      <option name="closed" value="true" />
+      <created>1736158070770</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1736158070770</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -148,6 +164,7 @@
     <MESSAGE value="Changing output file names" />
     <MESSAGE value="vgsales.py not quite working here..." />
     <MESSAGE value="vgsales.py changed" />
-    <option name="LAST_COMMIT_MESSAGE" value="vgsales.py changed" />
+    <MESSAGE value="Most recent changes..." />
+    <option name="LAST_COMMIT_MESSAGE" value="Most recent changes..." />
   </component>
 </project>
